@@ -1,0 +1,97 @@
+
+
+--create Role Model
+drop table role;
+create table role(
+roleId serial primary key,
+role varchar not null unique
+);
+
+/*add records in Role table*/
+
+insert into role values(default,'Admin');
+insert into role values(default,'Employee');
+insert into role values(default,'Standard');
+insert into role values(default,'Premium');
+ select * from role;
+
+--create user model
+--drop table user;
+create table bank_user(
+userID serial primary key,
+username varchar not null unique,
+upassword varchar not null,
+ufirstName varchar not null,
+ulastName varchar not null,
+uemail varchar not null,
+urole integer references role(roleId)
+);
+
+/*Add records in bank user table*/
+insert into bank_user values(default,'psoni','soni123','Pinal','Soni','sonipinal@gmail.com',1 );
+insert into bank_user values(default,'shree','shree123','Shreya','Shah','shahshreya@gmail.com',2 );
+insert into bank_user values(default,'hina11','hina123','Hina','Patel','patelhina@gmail.com',3 );
+insert into bank_user values(default,'parth','parth123','Parth','Seth','parth@gmail.com',4 );
+
+select * from bank_user;
+
+--delete all the records from bank_user table
+delete from bank_user;
+
+--Create AccountStatus model
+drop table accountStatus;
+create table accountStatus(statusId serial primary key,
+status varchar not null unique
+);
+
+
+/*add records into Account Status table. */
+--Pending, Open, or Closed, or Denied
+
+insert into accountstatus values(default,'Pending');
+insert into accountstatus values(default,'Open');
+insert into accountstatus values(default,'Closed');
+insert into accountstatus values(default,'Denied');
+
+select * from accountstatus ;
+
+
+--create AccounType model
+drop table accountType;
+create table accountType
+(
+typeId serial primary key,
+type varchar not null unique
+);
+
+
+--add records into Account type table
+--Checking or Savings
+insert into accounttype values(default,'Checking');
+insert into accounttype values(default,'Savings');
+
+
+select * from accountType ;
+
+-- create Account model
+drop table account;
+create table account(
+accountId serial primary key,
+balance numeric not null CHECK (balance > 0),
+accountStatus integer references accountStatus(statusId),
+accountType integer references accountType(typeId)
+);
+
+/*add records into Account table*/
+--Pending, Open, or Closed, or Denied
+--Checking or Savings
+insert into account values(default,3000.00,2,2);
+insert into account values(default,1000.00,1,1);
+insert into account values(default,2343.56,2,2);
+insert into account values(default,000.78,3,1);
+insert into account values(default,6541.65,2,2);
+insert into account values(default,8989.09,2,2);
+
+
+select * from account;
+
