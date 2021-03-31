@@ -1,0 +1,32 @@
+package com.revature.exception;
+
+public class TeacherNotFound extends Exception {
+
+	public TeacherNotFound() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public TeacherNotFound(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+		// TODO Auto-generated constructor stub
+	}
+
+	public TeacherNotFound(String message, Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
+
+	public TeacherNotFound(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+	public TeacherNotFound(Throwable cause) {
+		super(cause);
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+}
